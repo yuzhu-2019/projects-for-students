@@ -6,7 +6,7 @@
 
 ## 学习及开发内容
 
-- [2026–2027 学年目标与规划](undergraduate-agent/2026-2027.md)：学习大模型和智能体相关知识，并开发完成一个本科学习助手[CourseShelf](undergraduate-agent/product.md)。
+- [2026–2027 学年目标与规划](undergraduate-agent/2026-2027.md)：学习大模型和智能体相关知识，并开发完成一个本科学习助手[《CourseShelf 产品需求说明书》](undergraduate-agent/product.md)。
 
 ## 资料
 

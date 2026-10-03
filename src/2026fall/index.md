@@ -1,12 +1,12 @@
 # 2026秋季学期
 
-本学期从 **2026 年 10 月 2 日** 起，以 **两周一期** 推进，约在 **2027 年 1 月 15 日** 结束。期末交付 **[Shelf](product.md)**。需求见 **[产品需求](prd.md)**：自己的知识地图和素材书架，主页按计划学下一块。本科对照培养方案，研究生对照研究领域。
+本学期从 **2026 年 10 月 2 日** 起，以 **两周一期** 推进，约在 **2027 年 1 月 15 日** 结束。期末交付 **[《CourseShelf 产品需求说明书》](../undergraduate-agent/product.md)**。需求见 **[《CourseShelf 产品需求说明书》](../undergraduate-agent/product.md)**：自己的知识地图和素材书架，主页按计划学下一块。本科对照培养方案，研究生对照研究领域。
 
 能力仍对齐站点 [总体目标](../goals.md)。
 
 ## 从这里进入
 
-+ [产品需求](prd.md)：要解决的问题、主页、两种脊梁、助手技能、第一版范围。
++ [《CourseShelf 产品需求说明书》](../undergraduate-agent/product.md)：要解决的问题、主页、两种脊梁、助手技能、第一版范围。
 + [学习安排](#学习安排)：八期主题、每两期要做什么、期末交出的成果形态。
 + [学习资料](#学习资料)：概念说明、环境、公开文档、练习，以及课堂讲义的位置。
 + [学习成果](works.md)：一份成果要包含的四块内容，以及可以替换的示例展位。
@@ -35,7 +35,7 @@
 
 10 月 2 日 – 10 月 15 日。本期。
 
-先读 [产品：Shelf](product.md)。从四套起步书架里选一套作为本期主场景（`student`、`researcher`、`engineer`、`reading-group`），再另举一个你会用到的第二场景。画出卡片从哪来、存在哪、允许哪三个工具：`search_cards`、`get_card`、`diff_since_last`。
+先读 [《CourseShelf 产品需求说明书》](../undergraduate-agent/product.md)。从四套起步书架里选一套作为本期主场景（`student`、`researcher`、`engineer`、`reading-group`），再另举一个你会用到的第二场景。画出卡片从哪来、存在哪、允许哪三个工具：`search_cards`、`get_card`、`diff_since_last`。
 
 产出：一页说明（选定的起步书架 + 第二场景）+ 不少于 8 条来源（本地文件、网页、arXiv 或文档站）。
 

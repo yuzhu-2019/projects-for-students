@@ -5,7 +5,7 @@
 # 学习及开发内容
 
 - [2026–2027 学年目标与规划](undergraduate-agent/2026-2027.md)
-- [CourseShelf 产品需求说明书](undergraduate-agent/product.md)
+- [《CourseShelf 产品需求说明书》](undergraduate-agent/product.md)
 
 # 资料
 
