@@ -9,8 +9,8 @@ build-dir = "public"
 
 [output.html]
 default-theme = "light"
-git-repository-url = "https://github.com/yuzhu-2019/projects-for-students"
-edit-url-template = "https://github.com/yuzhu-2019/projects-for-students/edit/main/{path}"
+git-repository-url = "https://gitee.com/yuzhu-2019/projects-for-students"
+edit-url-template = "https://gitee.com/yuzhu-2019/projects-for-students/edit/main/{path}"
 site-url = "/projects-for-students/"
 
 [output.html.fold]

@@ -1,0 +1,947 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>从 VS Code 到 AI 编程 Agent - 本科生智能体开发</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">本科生智能体开发</a></li><li class="chapter-item affix "><li class="part-title">学习及开发内容</li><li class="chapter-item "><a href="../undergraduate-agent/2026-2027.html"><strong aria-hidden="true">1.</strong> 2026–2027 学年目标与规划</a></li><li class="chapter-item "><a href="../undergraduate-agent/product.html"><strong aria-hidden="true">2.</strong> CourseShelf 产品说明</a></li><li class="chapter-item affix "><li class="part-title">资料</li><li class="chapter-item "><a href="../undergraduate-agent/resources.html"><strong aria-hidden="true">3.</strong> 学习资料与开发参考</a></li><li class="chapter-item expanded "><a href="../undergraduate-agent/vscode-ai-coding-agent-github-pages.html" class="active"><strong aria-hidden="true">4.</strong> 从 VS Code 到 AI 编程 Agent</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">本科生智能体开发</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://gitee.com/yuzhu-2019/projects-for-students" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://gitee.com/yuzhu-2019/projects-for-students/edit/main/src/undergraduate-agent/vscode-ai-coding-agent-github-pages.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <hr />
+<h2>description: 面向大学低年级学生的 VS Code、AI 编程插件、DeepSeek 与
+Coding Agent 入门教程
+title: 从 VS Code 到 AI 编程 Agent：初学者实验指南</h2>
+<h1 id="从-vs-code-到-ai-编程-agent"><a class="header" href="#从-vs-code-到-ai-编程-agent">从 VS Code 到 AI 编程 Agent</a></h1>
+<blockquote>
+<p><strong>适合谁？</strong> 刚开始做 Python 项目、还不熟悉 VS Code 和命令行的同学。<br />
+<strong>需要多久？</strong> 约 2--3 小时。<br />
+<strong>最终成果：</strong> 在 VS Code 中接入大语言模型，让 AI
+不仅能回答问题，还能读取项目、修改代码、运行程序并协助修复错误。</p>
+</blockquote>
+<hr />
+<h2 id="-先看路线这次要完成什么"><a class="header" href="#-先看路线这次要完成什么">🚀 先看路线：这次要完成什么？</a></h2>
+<p>不用先学完 VS Code，也不用先学命令行。</p>
+<p>按照下面的顺序做即可：</p>
+<pre><code class="language-text">安装 VS Code
+    ↓
+安装 Python + Python 扩展
+    ↓
+运行第一个 Python 程序
+    ↓
+安装 AI 编程插件
+    ↓
+接入 DeepSeek 等大语言模型
+    ↓
+先用 Chat 理解和修改代码
+    ↓
+再使用 Agent 操作项目
+    ↓
+让 Agent 运行 → 报错 → 修复 → 再运行
+    ↓
+用 Agent 辅助完成 Mini CourseShelf
+</code></pre>
+<h3 id="完成本教程后你应该能做到"><a class="header" href="#完成本教程后你应该能做到">完成本教程后，你应该能做到</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+在 VS Code 中打开一个 Python 项目</li>
+<li><input disabled="" type="checkbox"/>
+点击按钮运行 <code>.py</code> 文件</li>
+<li><input disabled="" type="checkbox"/>
+在 VS Code 中和 AI 讨论当前代码</li>
+<li><input disabled="" type="checkbox"/>
+让 AI 提出并执行文件修改</li>
+<li><input disabled="" type="checkbox"/>
+看懂 AI 准备修改什么，而不是直接 <code>Accept All</code></li>
+<li><input disabled="" type="checkbox"/>
+让 Agent 运行程序并查看错误</li>
+<li><input disabled="" type="checkbox"/>
+让 Agent 根据错误继续修复</li>
+<li><input disabled="" type="checkbox"/>
+解释 <strong>LLM 和 Agent 的区别</strong></li>
+</ul>
+<hr />
+<h1 id="1-先搞清楚我们到底在搭什么"><a class="header" href="#1-先搞清楚我们到底在搭什么">1. 先搞清楚：我们到底在搭什么？</a></h1>
+<p>最终搭出的系统大致是：</p>
+<pre><code class="language-text">┌──────────────────────────┐
+│         VS Code          │
+│   写代码 / 文件 / 运行     │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│      AI 编程插件          │
+│  上下文 / 工具 / Agent    │
+└────────────┬─────────────┘
+             │ API
+             ▼
+┌──────────────────────────┐
+│      DeepSeek 等 LLM      │
+│   理解 / 推理 / 生成代码    │
+└──────────────────────────┘
+</code></pre>
+<hr />
+<p>组件                    可以理解成              做什么</p>
+<hr />
+<p><strong>VS Code</strong>             工作台                  管理文件、编辑代码、运行程序</p>
+<p><strong>LLM</strong>                 大脑                    理解任务、分析代码、生成内容</p>
+<p><strong>AI 编程插件</strong>         连接器 + 工具箱         把项目交给模型，并提供文件、终端等工具</p>
+<h2 id="coding-agent--------能行动的-ai-助手--------观察项目决定下一步调用工具检查结果"><a class="header" href="#coding-agent--------能行动的-ai-助手--------观察项目决定下一步调用工具检查结果"><strong>Coding Agent</strong>        能行动的 AI 助手        观察项目、决定下一步、调用工具、检查结果</a></h2>
+<blockquote>
+<p><strong>最重要的一句话：LLM ≠ Agent。</strong></p>
+<p>DeepSeek 等模型负责&quot;思考和生成&quot;；IDE
+插件把项目上下文和工具提供给模型。模型能够反复使用这些工具完成任务时，我们才得到一个
+Coding Agent。</p>
+</blockquote>
+<hr />
+<h1 id="2-安装-vs-code-和-python"><a class="header" href="#2-安装-vs-code-和-python">2. 安装 VS Code 和 Python</a></h1>
+<h2 id="step-1安装-vs-code"><a class="header" href="#step-1安装-vs-code">Step 1：安装 VS Code</a></h2>
+<p>打开：</p>
+<p><strong>https://code.visualstudio.com/</strong></p>
+<p>下载与你电脑系统对应的版本并安装。</p>
+<p>第一次打开时，不用研究所有菜单。先认识四个地方：</p>
+<ul>
+<li><strong>Explorer</strong>：左侧，查看项目文件</li>
+<li><strong>Editor</strong>：中间，写代码</li>
+<li><strong>Extensions</strong>：左侧，安装插件</li>
+<li><strong>Terminal</strong>：底部，程序运行和命令执行的位置</li>
+</ul>
+<blockquote>
+<p>💡 <strong>现在不会命令行完全没关系。</strong><br />
+本教程尽量先用 VS Code 的按钮完成操作。后面 Agent
+如果需要运行命令，我们再逐渐学习。</p>
+</blockquote>
+<hr />
+<h2 id="step-2安装-python"><a class="header" href="#step-2安装-python">Step 2：安装 Python</a></h2>
+<p>打开：</p>
+<p><strong>https://www.python.org/downloads/</strong></p>
+<p>安装一个当前仍受支持的 Python 3 版本。</p>
+<p>安装完成后，重新打开 VS Code。</p>
+<hr />
+<h2 id="step-3安装-python-扩展"><a class="header" href="#step-3安装-python-扩展">Step 3：安装 Python 扩展</a></h2>
+<p>在 VS Code 左侧点击：</p>
+<p><strong>Extensions → 搜索 <code>Python</code></strong></p>
+<p>安装 Microsoft 发布的 <strong>Python</strong> 扩展。</p>
+<p>参考：</p>
+<p><strong>https://code.visualstudio.com/docs/python/python-quick-start</strong></p>
+<hr />
+<h1 id="3-先运行一个普通-python-程序"><a class="header" href="#3-先运行一个普通-python-程序">3. 先运行一个普通 Python 程序</a></h1>
+<h2 id="step-1创建项目"><a class="header" href="#step-1创建项目">Step 1：创建项目</a></h2>
+<p>在电脑上建立文件夹：</p>
+<pre><code class="language-text">my-first-agent
+</code></pre>
+<p>然后在 VS Code：</p>
+<p><strong>File → Open Folder... → 选择 <code>my-first-agent</code></strong></p>
+<hr />
+<h2 id="step-2创建-hellopy"><a class="header" href="#step-2创建-hellopy">Step 2：创建 <code>hello.py</code></a></h2>
+<p>在左侧 Explorer 点击 <strong>New File</strong>：</p>
+<pre><code class="language-text">hello.py
+</code></pre>
+<p>输入：</p>
+<pre><code class="language-python">name = input(&quot;What's your name? &quot;)
+print(&quot;Hello,&quot;, name)
+</code></pre>
+<p>保存。</p>
+<hr />
+<h2 id="step-3运行"><a class="header" href="#step-3运行">Step 3：运行</a></h2>
+<p>打开 <code>hello.py</code>，点击编辑器右上角：</p>
+<p><strong>▶ Run Python File</strong></p>
+<p>底部应该出现类似：</p>
+<pre><code class="language-text">What's your name? Alex
+Hello, Alex
+</code></pre>
+<h3 id="-检查点-1"><a class="header" href="#-检查点-1">✅ 检查点 1</a></h3>
+<p>如果你已经看到 <code>Hello, Alex</code>，说明：</p>
+<pre><code class="language-text">VS Code → Python → 程序运行
+</code></pre>
+<p>这一段已经正常工作。</p>
+<blockquote>
+<p>你可能注意到 Terminal 自动出现了一条命令。现在不需要背它。<br />
+<strong>Run 按钮其实是在替你调用 Python。</strong></p>
+</blockquote>
+<hr />
+<h1 id="4-给-vs-code-装上-ai"><a class="header" href="#4-给-vs-code-装上-ai">4. 给 VS Code 装上 AI</a></h1>
+<h2 id="推荐方案continue--deepseek"><a class="header" href="#推荐方案continue--deepseek">推荐方案：Continue + DeepSeek</a></h2>
+<p>本教程用 <strong>Continue</strong> 举例，因为它可以作为 VS Code
+插件使用，并支持连接不同模型和 Agent 工作方式。</p>
+<blockquote>
+<p>插件更新很快。按钮位置、模型列表或配置界面可能与本文略有不同。遇到差异时，以插件当前界面和官方文档为准。</p>
+</blockquote>
+<h3 id="step-1安装-continue"><a class="header" href="#step-1安装-continue">Step 1：安装 Continue</a></h3>
+<p>在 VS Code：</p>
+<p><strong>Extensions → 搜索 <code>Continue</code> → Install</strong></p>
+<p>主页：</p>
+<p><strong>https://www.continue.dev/</strong></p>
+<p>文档：</p>
+<p><strong>https://docs.continue.dev/</strong></p>
+<p>安装后打开 Continue 面板。</p>
+<hr />
+<h1 id="5-接入-deepseek"><a class="header" href="#5-接入-deepseek">5. 接入 DeepSeek</a></h1>
+<h2 id="step-1准备-api-key"><a class="header" href="#step-1准备-api-key">Step 1：准备 API Key</a></h2>
+<p>打开 DeepSeek API 文档：</p>
+<p><strong>https://api-docs.deepseek.com/zh-cn/</strong></p>
+<p>根据当前平台页面创建自己的 API Key。</p>
+<p>它通常看起来类似：</p>
+<pre><code class="language-text">sk-xxxxxxxxxxxxxxxx
+</code></pre>
+<h3 id="-api-key-不是普通配置文字"><a class="header" href="#-api-key-不是普通配置文字">🔐 API Key 不是普通配置文字</a></h3>
+<p>把它当成密码。</p>
+<p><strong>不要：</strong></p>
+<ul>
+<li>写进 <code>README.md</code></li>
+<li>上传到 GitHub</li>
+<li>发到群里</li>
+<li>截图公开</li>
+<li>直接写进 Python 源代码</li>
+</ul>
+<p>如果 Key 意外公开，应立即在平台中撤销并重新创建。</p>
+<hr />
+<h2 id="step-2在插件中配置模型"><a class="header" href="#step-2在插件中配置模型">Step 2：在插件中配置模型</a></h2>
+<p>不同版本界面可能变化，但你需要寻找类似：</p>
+<pre><code class="language-text">Provider
+Model
+API Key
+</code></pre>
+<p>它们分别表示：</p>
+<pre><code class="language-text">Provider → 去哪家模型服务商调用
+Model    → 调哪个模型
+API Key  → 你是否有调用权限
+</code></pre>
+<p>如果插件直接提供 <strong>DeepSeek</strong>，按照当前界面选择 DeepSeek 并填写 Key。</p>
+<p>如果需要兼容接口，请以：</p>
+<ul>
+<li>Continue 当前模型配置文档</li>
+<li>DeepSeek 当前 API 文档</li>
+</ul>
+<p>为准。</p>
+<blockquote>
+<p>⚠️ <strong>不要照抄几个月前教程中的模型 ID。</strong><br />
+模型名称和接口会更新，请使用实验当天插件与 DeepSeek
+文档中实际可用的名称。</p>
+</blockquote>
+<hr />
+<h1 id="6-先不要用-agent第一次和代码聊天"><a class="header" href="#6-先不要用-agent第一次和代码聊天">6. 先不要用 Agent：第一次和代码聊天</a></h1>
+<p>打开刚才的 <code>hello.py</code>。</p>
+<p>在 AI Chat 输入：</p>
+<pre><code class="language-text">我是刚开始学习 Python 的大学生。
+
+请逐行解释当前 hello.py。
+不要修改代码。
+
+重点解释：
+1. input() 做什么；
+2. name 是什么；
+3. print() 为什么可以输出 name。
+</code></pre>
+<h3 id="-检查点-2"><a class="header" href="#-检查点-2">✅ 检查点 2</a></h3>
+<p>如果 AI 能根据 <code>hello.py</code> 的内容解释代码，说明：</p>
+<pre><code class="language-text">VS Code
+   ↓
+AI 插件
+   ↓
+DeepSeek
+</code></pre>
+<p>基本已经连通。</p>
+<hr />
+<h1 id="7-第一次让-ai-改代码"><a class="header" href="#7-第一次让-ai-改代码">7. 第一次让 AI 改代码</a></h1>
+<p>输入：</p>
+<pre><code class="language-text">请修改 hello.py：
+
+1. 除了姓名，再询问用户年龄；
+2. 最后输出姓名和年龄；
+3. 保持代码简单，适合 Python 初学者。
+
+修改之前先告诉我你准备改什么。
+</code></pre>
+<p>这一次，<strong>不要习惯性点击 <code>Accept All</code></strong>。</p>
+<p>先看：</p>
+<ul>
+<li>AI 准备改哪个文件？</li>
+<li>删除了什么？</li>
+<li>添加了什么？</li>
+<li>修改后的 Python 你能大致读懂吗？</li>
+</ul>
+<p>推荐形成这个习惯：</p>
+<pre><code class="language-text">提出任务
+   ↓
+看 AI 的计划
+   ↓
+检查修改
+   ↓
+运行
+   ↓
+观察结果
+   ↓
+决定下一步
+</code></pre>
+<p>而不是：</p>
+<pre><code class="language-text">AI 写代码 → Accept All → 完成 ❌
+</code></pre>
+<hr />
+<h1 id="8-从-ai-chat-升级到-coding-agent"><a class="header" href="#8-从-ai-chat-升级到-coding-agent">8. 从 AI Chat 升级到 Coding Agent</a></h1>
+<p>普通 Chat 通常是：</p>
+<pre><code class="language-text">你提出问题
+    ↓
+模型回答
+</code></pre>
+<p>Agent 则可以进一步获得工具，例如：</p>
+<pre><code class="language-text">读取文件
+搜索代码
+修改文件
+运行命令
+读取运行结果
+</code></pre>
+<p>于是工作流程变成：</p>
+<pre><code class="language-text">任务
+ ↓
+查看项目
+ ↓
+分析下一步
+ ↓
+调用工具
+ ↓
+观察结果
+ ↓
+继续分析
+ ↓
+再次调用工具
+ ↓
+完成 / 请求人类决定
+</code></pre>
+<p>这就是 Agent 最值得观察的地方。</p>
+<hr />
+<h1 id="9-核心实验让-agent-自己发现并修-bug"><a class="header" href="#9-核心实验让-agent-自己发现并修-bug">9. 核心实验：让 Agent 自己发现并修 Bug</a></h1>
+<p>把 <code>hello.py</code> 暂时改成：</p>
+<pre><code class="language-python">age = input(&quot;Age: &quot;)
+
+if age &gt; 18:
+    print(&quot;Adult&quot;)
+</code></pre>
+<p>运行。</p>
+<p>程序会出现错误。</p>
+<p><strong>先不要自己修。</strong></p>
+<p>把任务交给 Agent：</p>
+<pre><code class="language-text">请检查并运行当前程序。
+
+如果出现错误：
+
+1. 先解释为什么出错；
+2. 告诉我准备修改哪一行；
+3. 再修改代码；
+4. 修改后重新运行验证；
+5. 最后用适合 Python 初学者的语言总结这个错误。
+
+如果需要执行终端命令，先告诉我这个命令是做什么的。
+</code></pre>
+<p>现在重点不是看 AI 最终写出了什么代码，而是观察它的过程：</p>
+<pre><code class="language-text">读取代码
+   ↓
+运行
+   ↓
+看到错误
+   ↓
+分析
+   ↓
+修改
+   ↓
+再次运行
+</code></pre>
+<h3 id="-检查点-3"><a class="header" href="#-检查点-3">✅ 检查点 3</a></h3>
+<p>如果 Agent 能够根据实际运行结果继续行动，你已经体验到了最基本的 <strong>Agent
+Loop</strong>。</p>
+<hr />
+<h1 id="10-agent-loop-到底是什么"><a class="header" href="#10-agent-loop-到底是什么">10. Agent Loop 到底是什么？</a></h1>
+<p>可以把它简化成：</p>
+<pre><code class="language-text">┌─────────────┐
+│   Observe   │
+│    观察      │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│   Reason    │
+│    分析      │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│     Act     │
+│    行动      │
+└──────┬──────┘
+       │
+       └──────────→ 再次 Observe
+</code></pre>
+<p>在编程中：</p>
+<p>Agent 阶段      编程中的例子</p>
+<hr />
+<p>Observe         读取 <code>hello.py</code>、查看报错
+Reason          判断错误可能在哪里
+Act             修改文件、运行程序
+Observe again   查看新的运行结果</p>
+<hr />
+<pre><code class="language-{=html}">&lt;details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;summary&gt;
+</code></pre>
+<p><code>&lt;strong&gt;</code>{=html}展开：为什么网页里的 LLM 通常不等于 Coding
+Agent？<code>&lt;/strong&gt;</code>{=html}</p>
+<pre><code class="language-{=html}">&lt;/summary&gt;
+</code></pre>
+<p>如果你只在普通聊天框里输入：</p>
+<pre><code class="language-text">帮我修复 hello.py
+</code></pre>
+<p>模型并不会自动拥有你电脑上的 <code>hello.py</code>。</p>
+<p>Coding Agent 的关键在于 IDE 或 Agent
+系统可以向模型提供工具。概念上类似：</p>
+<pre><code class="language-text">read_file()
+write_file()
+search_code()
+run_command()
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-text">你：“修复程序”
+        ↓
+LLM：“我需要先看文件”
+        ↓
+read_file(&quot;hello.py&quot;)
+        ↓
+LLM：分析代码
+        ↓
+write_file(...)
+        ↓
+run_command(...)
+        ↓
+LLM：检查结果
+        ↓
+决定是否继续
+</code></pre>
+<p>所以一个很实用的理解是：</p>
+<pre><code class="language-text">Agent
+≈ Model
++ Context
++ Tools
++ Loop
++ Human Control
+</code></pre>
+<pre><code class="language-{=html}">&lt;/details&gt;
+</code></pre>
+<hr />
+<h1 id="11-mini-project用-agent-辅助做-courseshelf"><a class="header" href="#11-mini-project用-agent-辅助做-courseshelf">11. Mini Project：用 Agent 辅助做 CourseShelf</a></h1>
+<p>现在不要继续做玩具代码。</p>
+<p>建立一个真正的小项目：</p>
+<pre><code class="language-text">CourseShelf/
+│
+├── main.py
+├── courses.json
+└── README.md
+</code></pre>
+<p>第一版只做：</p>
+<ol>
+<li>添加课程</li>
+<li>查看课程</li>
+<li>删除课程</li>
+<li>使用 JSON 保存数据</li>
+</ol>
+<p>暂时<strong>不要</strong>加入：</p>
+<ul>
+<li>Web 网站</li>
+<li>登录系统</li>
+<li>数据库</li>
+<li>RAG</li>
+<li>向量数据库</li>
+<li>LangChain</li>
+<li>多 Agent</li>
+<li>复杂 GUI</li>
+</ul>
+<p>目标是学会<strong>和 Agent 一起开发</strong>，而不是让 AI 一次生成一个大系统。</p>
+<hr />
+<h1 id="12-第一步一定是-plan不是-coding"><a class="header" href="#12-第一步一定是-plan不是-coding">12. 第一步一定是 Plan，不是 Coding</a></h1>
+<p>新建空的 <code>CourseShelf</code> 文件夹，在 VS Code 打开。</p>
+<p>把下面这段直接交给 Agent：</p>
+<pre><code class="language-text">我要做一个叫 CourseShelf 的 Python 小项目。
+
+我是 Python 初学者。
+
+第一版只需要：
+1. 添加课程；
+2. 查看课程；
+3. 删除课程；
+4. 使用 JSON 文件保存数据。
+
+现在不要写代码。
+
+请先：
+1. 分析需求；
+2. 建议需要哪些文件；
+3. 把开发过程拆成不超过 5 步；
+4. 每一步说明我要学到什么。
+
+如果有需要我决定的问题，请先问我。
+</code></pre>
+<h3 id="先检查它的计划"><a class="header" href="#先检查它的计划">先检查它的计划</a></h3>
+<p>问自己：</p>
+<ul>
+<li>它有没有加入根本不需要的框架？</li>
+<li>这个方案我能理解吗？</li>
+<li>第一步是不是足够小？</li>
+<li>我完成一步后能不能马上运行验证？</li>
+</ul>
+<hr />
+<h1 id="13-一次只实现一步"><a class="header" href="#13-一次只实现一步">13. 一次只实现一步</a></h1>
+<p>计划确认后：</p>
+<pre><code class="language-text">现在只实现第 1 步。
+
+要求：
+1. 使用适合 Python 初学者理解的写法；
+2. 不要提前实现后面的功能；
+3. 修改前告诉我会创建或修改哪些文件；
+4. 完成后解释关键代码；
+5. 告诉我怎样运行和验证。
+</code></pre>
+<p>完成后，<strong>自己运行一次</strong>。</p>
+<hr />
+<h1 id="14-让-agent-测试而不是只写代码"><a class="header" href="#14-让-agent-测试而不是只写代码">14. 让 Agent 测试，而不是只写代码</a></h1>
+<p>接着输入：</p>
+<pre><code class="language-text">请检查刚才实现的功能。
+
+先不要添加新功能。
+
+请：
+1. 运行程序；
+2. 设计至少 3 个简单测试；
+3. 如果发现错误，先解释原因；
+4. 再修改；
+5. 修改后重新测试；
+6. 最后总结你实际修改了什么。
+</code></pre>
+<p>这里要特别观察：</p>
+<blockquote>
+<p><strong>Agent 真的运行并验证了吗，还是只说&quot;应该可以工作&quot;？</strong></p>
+</blockquote>
+<p>&quot;代码看起来对&quot;和&quot;程序实际运行正确&quot;不是一回事。</p>
+<hr />
+<h1 id="15-推荐的开发节奏"><a class="header" href="#15-推荐的开发节奏">15. 推荐的开发节奏</a></h1>
+<p>后面按照：</p>
+<pre><code class="language-text">添加课程
+   ↓
+运行 + 测试
+   ↓
+查看课程
+   ↓
+运行 + 测试
+   ↓
+删除课程
+   ↓
+运行 + 测试
+   ↓
+JSON 保存
+   ↓
+运行 + 测试
+</code></pre>
+<p>如果已经学习 Git，还可以进一步变成：</p>
+<pre><code class="language-text">一个小功能
+   ↓
+运行
+   ↓
+测试
+   ↓
+检查 AI 修改
+   ↓
+Git Commit
+   ↓
+下一个功能
+</code></pre>
+<hr />
+<h1 id="16--建议保存的-agent-prompt"><a class="header" href="#16--建议保存的-agent-prompt">16. ⭐ 建议保存的 Agent Prompt</a></h1>
+<p>下面这个模板以后做项目也可以继续使用：</p>
+<pre><code class="language-text">【我的背景】
+我是 Python 初学者。
+
+【任务】
+请完成：__________
+
+【工作方式】
+1. 先阅读相关文件；
+2. 先给出计划，不要马上修改；
+3. 一次只完成一个小步骤；
+4. 修改前说明准备改哪些文件；
+5. 如果需要运行命令，先解释命令的作用；
+6. 完成后实际运行或测试；
+7. 如果出错，先解释错误原因，再修复；
+8. 最后总结实际修改内容。
+
+【限制】
+不要为了完成任务引入不必要的框架或复杂技术。
+优先使用我目前能够理解的简单实现。
+</code></pre>
+<hr />
+<h1 id="17-初学者使用-agent-的-5-条规则"><a class="header" href="#17-初学者使用-agent-的-5-条规则">17. 初学者使用 Agent 的 5 条规则</a></h1>
+<h3 id="①-不要一上来就说帮我把整个项目写完"><a class="header" href="#①-不要一上来就说帮我把整个项目写完">① 不要一上来就说&quot;帮我把整个项目写完&quot;</a></h3>
+<p>改成：</p>
+<pre><code class="language-text">先分析需求，拆成不超过 5 步，不要写代码。
+</code></pre>
+<h3 id="②-不要无脑-accept-all"><a class="header" href="#②-不要无脑-accept-all">② 不要无脑 <code>Accept All</code></a></h3>
+<p>至少看清：</p>
+<pre><code class="language-text">改了哪个文件？
+为什么改？
+我能不能大致读懂？
+</code></pre>
+<h3 id="③-一次只做一个小功能"><a class="header" href="#③-一次只做一个小功能">③ 一次只做一个小功能</a></h3>
+<p>任务越小，越容易验证。</p>
+<h3 id="④-agent-说完成了不等于完成"><a class="header" href="#④-agent-说完成了不等于完成">④ &quot;Agent 说完成了&quot;不等于完成</a></h3>
+<p>让它：</p>
+<pre><code class="language-text">实际运行。
+</code></pre>
+<p>然后你自己再运行一次。</p>
+<h3 id="⑤-看不懂终端命令时不要假装看懂"><a class="header" href="#⑤-看不懂终端命令时不要假装看懂">⑤ 看不懂终端命令时，不要假装看懂</a></h3>
+<p>直接告诉 Agent：</p>
+<pre><code class="language-text">执行之前，请解释：
+1. 这个命令做什么；
+2. 每个重要参数是什么意思；
+3. 它会不会修改我的文件。
+</code></pre>
+<p>这也是学习命令行的一种方式。</p>
+<hr />
+<h1 id="18-常见问题"><a class="header" href="#18-常见问题">18. 常见问题</a></h1>
+<pre><code class="language-{=html}">&lt;details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;summary&gt;
+</code></pre>
+<p><code>&lt;strong&gt;</code>{=html}找不到 Run Python File 按钮怎么办？<code>&lt;/strong&gt;</code>{=html}</p>
+<pre><code class="language-{=html}">&lt;/summary&gt;
+</code></pre>
+<p>先确认：</p>
+<ol>
+<li>已安装 Python；</li>
+<li>已安装 Microsoft Python 扩展；</li>
+<li>当前打开的文件后缀是 <code>.py</code>；</li>
+<li>VS Code 已选择可用的 Python Interpreter。</li>
+</ol>
+<p>可以参考：</p>
+<p>https://code.visualstudio.com/docs/python/python-quick-start</p>
+<pre><code class="language-{=html}">&lt;/details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;summary&gt;
+</code></pre>
+<p><code>&lt;strong&gt;</code>{=html}AI
+能聊天，但不知道我当前的代码怎么办？<code>&lt;/strong&gt;</code>{=html}</p>
+<pre><code class="language-{=html}">&lt;/summary&gt;
+</code></pre>
+<p>检查：</p>
+<ol>
+<li>当前项目是否通过 <strong>Open Folder</strong> 打开；</li>
+<li>插件是否获得当前文件/工作区上下文；</li>
+<li>是否需要显式添加文件到 Chat Context；</li>
+<li>当前模式是否支持读取工作区。</li>
+</ol>
+<p>不同插件版本操作方式可能不同，请查当前插件文档。</p>
+<pre><code class="language-{=html}">&lt;/details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;summary&gt;
+</code></pre>
+<p><code>&lt;strong&gt;</code>{=html}模型连接失败怎么办？<code>&lt;/strong&gt;</code>{=html}</p>
+<pre><code class="language-{=html}">&lt;/summary&gt;
+</code></pre>
+<p>优先检查：</p>
+<ol>
+<li>API Key 是否正确；</li>
+<li>API Key 是否还有权限/额度；</li>
+<li>Provider 是否选择正确；</li>
+<li>Model ID 是否仍然有效；</li>
+<li>当前网络是否可以访问对应 API。</li>
+</ol>
+<p>模型名称变化较快，不要优先相信旧视频里的配置值。</p>
+<p>DeepSeek 当前文档：</p>
+<p>https://api-docs.deepseek.com/zh-cn/</p>
+<pre><code class="language-{=html}">&lt;/details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;summary&gt;
+</code></pre>
+<p><code>&lt;strong&gt;</code>{=html}Agent
+想执行一个我看不懂的命令怎么办？<code>&lt;/strong&gt;</code>{=html}</p>
+<pre><code class="language-{=html}">&lt;/summary&gt;
+</code></pre>
+<p>不要急着批准。</p>
+<p>先让 Agent 解释：</p>
+<pre><code class="language-text">先不要执行。
+
+请告诉我：
+1. 这条命令做什么；
+2. 为什么这个任务需要它；
+3. 会创建、删除或修改哪些文件；
+4. 有没有更简单的 VS Code 图形界面操作。
+</code></pre>
+<p>理解后再决定。</p>
+<pre><code class="language-{=html}">&lt;/details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;details&gt;
+</code></pre>
+<pre><code class="language-{=html}">&lt;summary&gt;
+</code></pre>
+<p><code>&lt;strong&gt;</code>{=html}Agent 越改越乱怎么办？<code>&lt;/strong&gt;</code>{=html}</p>
+<pre><code class="language-{=html}">&lt;/summary&gt;
+</code></pre>
+<p>停止继续追加任务。</p>
+<p>让它：</p>
+<pre><code class="language-text">先不要修改任何文件。
+
+请总结：
+1. 我原来的目标；
+2. 你已经修改了什么；
+3. 当前还有什么错误；
+4. 下一步最小的修复是什么。
+</code></pre>
+<p>如果已经学习 Git，可以回到之前正常工作的 commit，再重新做这个小步骤。</p>
+<pre><code class="language-{=html}">&lt;/details&gt;
+</code></pre>
+<hr />
+<h1 id="19-courseshelf-完成检查"><a class="header" href="#19-courseshelf-完成检查">19. CourseShelf 完成检查</a></h1>
+<p>你的第一版不需要漂亮。</p>
+<p>只需要确认：</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+可以添加课程</li>
+<li><input disabled="" type="checkbox"/>
+可以查看课程</li>
+<li><input disabled="" type="checkbox"/>
+可以删除课程</li>
+<li><input disabled="" type="checkbox"/>
+关闭程序后课程数据仍能保存</li>
+<li><input disabled="" type="checkbox"/>
+数据存放在 JSON 中</li>
+<li><input disabled="" type="checkbox"/>
+自己能够解释 <code>main.py</code> 的主要逻辑</li>
+<li><input disabled="" type="checkbox"/>
+至少亲自检查过一次 Agent 的修改</li>
+<li><input disabled="" type="checkbox"/>
+至少让 Agent 实际运行/测试过一次</li>
+<li><input disabled="" type="checkbox"/>
+遇到过一个错误，并理解 Agent 是怎样修复的</li>
+</ul>
+<hr />
+<h1 id="20-最后的自测"><a class="header" href="#20-最后的自测">20. 最后的自测</a></h1>
+<p>如果你能回答下面 4 个问题，这次实验的核心就掌握了：</p>
+<p><strong>Q1.</strong> VS Code、AI 插件和 DeepSeek 分别负责什么？</p>
+<p><strong>Q2.</strong> 为什么&quot;接入一个大语言模型&quot;还不等于&quot;构建了 Agent&quot;？</p>
+<p><strong>Q3.</strong> Agent 修改代码以后，为什么仍然需要运行和测试？</p>
+<p><strong>Q4.</strong> 如果 Agent 要执行一个你完全看不懂的命令，你应该怎么做？</p>
+<hr />
+<h1 id="21-只保留这几个参考链接"><a class="header" href="#21-只保留这几个参考链接">21. 只保留这几个参考链接</a></h1>
+<p>不用一次全部看完，遇到问题再查。</p>
+<h3 id="vs-code--python"><a class="header" href="#vs-code--python">VS Code / Python</a></h3>
+<ul>
+<li>VS Code：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+<li>Python Downloads：<a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
+<li>Python in VS
+Code：<a href="https://code.visualstudio.com/docs/python/python-quick-start">https://code.visualstudio.com/docs/python/python-quick-start</a></li>
+</ul>
+<h3 id="模型"><a class="header" href="#模型">模型</a></h3>
+<ul>
+<li>DeepSeek API：<a href="https://api-docs.deepseek.com/zh-cn/">https://api-docs.deepseek.com/zh-cn/</a></li>
+</ul>
+<h3 id="ai-编程插件"><a class="header" href="#ai-编程插件">AI 编程插件</a></h3>
+<ul>
+<li>Continue：<a href="https://www.continue.dev/">https://www.continue.dev/</a></li>
+<li>Continue Docs：<a href="https://docs.continue.dev/">https://docs.continue.dev/</a></li>
+</ul>
+<hr />
+<h2 id="-下一步学什么"><a class="header" href="#-下一步学什么">🎯 下一步学什么？</a></h2>
+<p>完成本实验后，推荐按下面的顺序继续：</p>
+<pre><code class="language-text">Git / GitHub
+     ↓
+Python 项目结构
+     ↓
+测试与 Debug
+     ↓
+API
+     ↓
+数据库
+     ↓
+直接调用 LLM API
+     ↓
+RAG
+     ↓
+更复杂的 Agent
+</code></pre>
+<p>暂时不用急着学习所有 AI 框架。</p>
+<blockquote>
+<p><strong>先学会判断 Agent 在做什么，再逐渐把更多工作交给 Agent。</strong></p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>关于教程时效性</strong></p>
+<p>AI
+编程插件、模型名称和界面更新很快。本文故意把重点放在相对稳定的方法上：</p>
+<p><strong>IDE → Model → Context → Tools → Agent Loop → Human Review</strong></p>
+<p>如果具体按钮、模型 ID 或配置方式发生变化，请以对应工具的最新文档为准。</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../undergraduate-agent/resources.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../undergraduate-agent/resources.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
