@@ -26,6 +26,6 @@ mdbook serve --open
 
 `https://用户名.gitee.io/仓库名/`
 
-当前按 `yuzhu-2019/projects-for-students` 配置，地址为 `https://yuzhu-2019.gitee.io/projects-for-students/`。若 Gitee 用户名不同，改 `book.toml` 里的三个地址后再构建。
+当前仓库是 [y-zhu/projects-for-students](https://gitee.com/y-zhu/projects-for-students)，站点地址为 `https://y-zhu.gitee.io/projects-for-students/`。
 
 新增栏目：在 `src/` 增加一个 `.md`，再在 `src/SUMMARY.md` 加一行链接。
