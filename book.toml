@@ -1,0 +1,18 @@
+[book]
+authors = ["量子专业智能 Agent 开发"]
+language = "zh-CN"
+src = "src"
+title = "本科生智能体开发"
+
+[build]
+build-dir = "public"
+
+[output.html]
+default-theme = "light"
+git-repository-url = "https://github.com/yuzhu-2019/projects-for-students"
+edit-url-template = "https://github.com/yuzhu-2019/projects-for-students/edit/main/{path}"
+site-url = "/projects-for-students/"
+
+[output.html.fold]
+enable = true
+level = 0
